@@ -21,31 +21,31 @@ def getRandomFortune():
     #list of possible fortunes
     fortunes = [
     "I see much code in code in your future",
-    "Consider eating more fortun cookies",
+    "Consider eating more fortune cookies",
     "You have tamed the mighty Python, now you must free it into the Great Spider's Web!"
     ]
 
     #randomly select one of the fortunes
     index = random.choice(fortunes)
 
-    return "test"
+    return index
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         header = "<h1>Fortune Cookie</h1>"
 
-        fortune = getRandomFortune()
+        fortune = "<strong>" + getRandomFortune() + "</strong>"
         fortune_sentence = "Your fortune: " + fortune
-        fortune_paragraph = "<p>" + forture_sentence + "</p>"
+        fortune_paragraph = "<p>" + fortune_sentence + "</p>"
 
-        lucky_number = random.randint(1, 100)
-        number_sentence = 'Your lucky number:'+ str(lucky_number)
+        lucky_number = "<strong>" + str(random.randint(1, 100)) + "</strong>"
+        number_sentence = "Your lucky number: " + lucky_number
         number_paragraph = "<p>" + number_sentence + "</p>"
 
-        cookie_again_button = "<a href=".">Another cookie plz!</a>"
+        cookie_again_button = "<a href='.'><button>Another cookie plz!</button></a>"
 
-        content = header + fortune_paragraph + number_paragraph
+        content = header + fortune_paragraph + number_paragraph + cookie_again_button
         self.response.write(content)
 
 
